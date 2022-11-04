@@ -14,23 +14,25 @@ function render() {
 	document.getElementById("dogs").innerHTML = newDog.getDogsHtml()
 }
 
+render()
+
 function getNewDog() {
 	currentDogIndex += 1
-	if(currentDogIndex >=dogsData.length) {
-		currentDogIndex = 0
-		render()
+	if(currentDogIndex == 3) {
+		document.getElementById("dogs").innerHTML = `<div class='no-profile-text'>🐶 No more profiles. Try again later.</div>`
 	} else {
-		newDog = new Dogs(newDog[currentDogIndex])
+		newDog = new Dogs(dogsData[currentDogIndex])
 		render()
 	}
 }
+
 
 function accept() {
 	newDog.setMatchStatus(true)
 	setTimeout(getNewDog, 1000)
 	badge.innerHTML = `
 	<div>
-	<img class='badge-nope" src="images/badge-nope.png">
+	<img class='badge-nope' src="images/badge-like.png">
 	</div>
 	`
 	setTimeout(removeBadge, 1000)
@@ -41,7 +43,7 @@ function reject() {
 	setTimeout(getNewDog, 1000)
 	badge.innerHTML = `
 	<div>
-	<img class='badge-like" src="images/badge-like.png">
+	<img class='badge-like' src="images/badge-nope.png">
 	</div>
 	`
 	setTimeout(removeBadge, 1000)
@@ -51,4 +53,3 @@ function removeBadge() {
 	badge.innerHTML = ""
 }
 
-render()

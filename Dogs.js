@@ -15,11 +15,10 @@ class Dogs {
     const { name, avatar, age, bio} = this;
     return `
 		<div class="dog-card">
-		<img class="dog-img" src="${avatar}">
-		<div class="dog-name">${name}</div>
-		<div class="dog-age">${age}</div>
+		<div class="dog-infos">${name}, ${age}</div>
 		<div class="dog-bio">${bio}</div>
 		</div>
+		<img class="dog-img" src="${avatar}">
 		`
   }
 }
